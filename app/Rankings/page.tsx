@@ -111,6 +111,7 @@ export default async function HomePage() {
               const mediumImageUrl = lastfmAlbum.image.find(image => image.size === 'medium')?.['#text'];
               // console.log('Url:',mediumImageUrl);
               return (
+                
                 <React.Fragment key={`${album.artist}-${album.albumName}`}>
                   <Ranking
                     album={album.albumName}
@@ -119,6 +120,7 @@ export default async function HomePage() {
                     image={mediumImageUrl}
                   />
                 </React.Fragment>
+               
               );
             })}
           </>
@@ -156,6 +158,7 @@ export default async function HomePage() {
                 
                 const mediumImageUrl = lastfmAlbum ? lastfmAlbum.image.find(image => image.size === 'medium')?.['#text'] : undefined;
                 return (
+                  
                   <React.Fragment key={`${review.artist}-${review.albumName}`}>
                     <RecentReview
                       key={review.id}
@@ -168,6 +171,7 @@ export default async function HomePage() {
                       image={mediumImageUrl}
                     />
                   </React.Fragment>
+                  
                 );
               })}
             </>
@@ -182,36 +186,39 @@ export default async function HomePage() {
 
 function Ranking({ album, artist, rating, image }: any) {
   return (
-    <div className={styles["card"]}>
-      <div className={styles["imageContainer"]}>
-        <img src={image} alt='Art N/A' />
+      <div className={styles["card"]}>
+        <div className={styles["imageContainer"]}>
+          <img src={image} alt='Art N/A' />
+        </div>
+        <div className={styles["content"]}>
+          <h4>{album}</h4>
+          <h5>{artist}</h5>
+          <p>Average Rating: {rating}/10</p>
+        </div>
       </div>
-      <div className={styles["content"]}>
-        <h4>{album}</h4>
-        <h5>{artist}</h5>
-        <p>Average Rating: {rating}/10</p>
-      </div>
-    </div>
   );
 }
 
 function RecentReview({ id, album, artist, rating, review, time, image }: any) {
   const formattedTime = formatDate(time);
   return (
-    <div className={styles["card"]}>
-      <div className={styles["imageContainer"]}>
-        <img src={image} alt='Art N/A' /> 
+    // <Link href={`/Rankings/${id}?artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}`}>
+      <div className={styles["card"]}>
+        <div className={styles["imageContainer"]}>
+          <img src={image} alt='Art N/A' /> 
+        </div>
+        <div className={styles["content"]}>
+          <h4>{album}</h4>
+          <h5>{artist}</h5>
+          <p>User Rating: {rating}/10</p>
+          <p>"{review}"</p>
+          <p className={styles["time"]}>{formattedTime}</p>
+        </div>
       </div>
-      <div className={styles["content"]}>
-        <h4>{album}</h4>
-        <h5>{artist}</h5>
-        <p>User Rating: {rating}/10</p>
-        <p>"{review}"</p>
-        <p className={styles["time"]}>{formattedTime}</p>
-      </div>
-    </div>
+    
   );
 }
+
 
 
 function formatDate(dateTime: string) {

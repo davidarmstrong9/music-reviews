@@ -12,7 +12,6 @@ export default function HomePage() {
     <div>
       <h1>AudioAuthority</h1>
       <h4>Discover who's hitting the highest notes.</h4>
-      <p>Navigate to one of our pages to enjoy our music ranking features!</p>
       <div className='container'>
         <div className='column'>
           <Link href="/Rankings">

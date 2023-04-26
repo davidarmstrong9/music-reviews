@@ -41,14 +41,14 @@ export default function SignUp() {
             <label htmlFor="username">Username:</label>
             <input
               type="text"
-              id="username"
+              id="username2"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <label htmlFor="password">Password:</label>
             <input
               type="password"
-              id="password"
+              id="password2"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
