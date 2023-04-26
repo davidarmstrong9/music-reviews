@@ -1,102 +1,43 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+'use client';
+import Link from 'next/link';
+import CreateReview from './Rankings/CreateReview';
+import SignUp from './Rankings/SignUp';
+import Login from './Rankings/LogIn';
+import { useRouter } from 'next/navigation';
+// import {UserProvider} from '@auth0/nextjs-auth0';
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function HomePage() {
+  const router = useRouter();
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <h1>AudioAuthority</h1>
+      <h4>Discover who's hitting the highest notes.</h4>
+      <p>Navigate to one of our pages to enjoy our music ranking features!</p>
+      <div className='container'>
+        <div className='column'>
+          <Link href="/Rankings">
+            <h3>Top Charts</h3>
+          </Link>
+          <h5>View Audio Authority's top rated, trending, and recently reviewed albums.</h5>
+        </div>
+        <div className='column'>
+          <Link href="/HeadToHead">
+            <h3>Head to Head!</h3>
+          </Link>
+          <h5>See if your favorite albums choices line up with Audio Authority's rankings.</h5>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      {/* <div className='container'> */}
+        <CreateReview />
+        {/* <div className='container'> */}
+          <SignUp />
+          <Login
+            initialUsername=''
+            initialPassword=''
+            onLogin={() => router.push('/')}
+          />
+        {/* </div> */}
+      {/* </div> */}
+    </div>
+  );
 }
