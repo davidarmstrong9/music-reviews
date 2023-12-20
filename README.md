@@ -1,3 +1,5 @@
+A music review web application where users can login to rate and comment on their favorite albums and songs.
+
 
 
 https://github.com/davidarmstrong9/music-reviews/assets/54511889/ac682959-4280-4a7c-bf9a-583163cdba85
